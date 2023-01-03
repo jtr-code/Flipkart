@@ -5,7 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 
 const SearchContainer = styled(Box)`
   display: flex;
-  width: 521.9998px;
+  width: 531.9998px;
   height: 36px;
   color: #000000;
   background-color: #ffff;
