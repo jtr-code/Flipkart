@@ -14,6 +14,7 @@ const SearchContainer = styled(Box)`
   font-size: 14px;
   border-radius: 2px;
   align-items: center;
+  
 `;
 
 const InputSearchBase = styled(InputBase)`
@@ -21,6 +22,7 @@ const InputSearchBase = styled(InputBase)`
   width: 100%;
   font-size: 13.33px;
   font-family: Roboto, Arial, sans-serif;
+ 
 `;
 
 const SearchIconWrapper = styled(Box)`
