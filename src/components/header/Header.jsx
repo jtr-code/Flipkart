@@ -3,6 +3,7 @@ import { AppBar, Toolbar, styled, Box, Typography } from "@mui/material";
 // <---------------------------------------------Components import starts---------------------------------------->
 
 import Search from "./Search";
+import CustomButtons from "./CustomButtons";
 
 // <---------------------------------------------Components import ends------------------------------------------>
 
@@ -61,6 +62,9 @@ const Header = () => {
           </ComponentPlusLogo>
         </ComponentLogo>
         <Search />
+        <Box>
+          <CustomButtons />
+        </Box>
       </Toolbar>
     </StyledHeader>
   );
