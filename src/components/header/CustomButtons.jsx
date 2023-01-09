@@ -18,19 +18,18 @@ const ButtonWrapper = styled(Box)`
   }
 `;
 
-const LoginButton = styled(Button)` 
+const LoginButton = styled(Button)`
   color: #2874f0;
   cursor: pointer;
   background: #fff;
   border-radius: 2px;
   margin-left: 45px;
-  box-shadow:none;
-  border:1px solid #DBDBDB;
-  padding:: 5px 40px 5px 40px;
-  text-transform:none;
-  font-weight:500;
-  height:32px;
-  width:130px;
+  box-shadow: none;
+  border: 1px solid #dbdbdb;
+  text-transform: none;
+  font-weight: 500;
+  height: 32px;
+  width: 130px;
 `;
 
 const CartWrapper = styled(Box)`
@@ -43,7 +42,12 @@ const CartWrapper = styled(Box)`
 const CustomButtons = () => {
   return (
     <ButtonWrapper>
-      <LoginButton variant="contained">Login</LoginButton>
+      <LoginButton
+        variant="contained"
+        sx={{ "&.MuiButtonBase-root:hover": { backgroundColor: "white" } }}
+      >
+        Login
+      </LoginButton>
       <Typography style={{ marginTop: 5, width: 130, cursor: "pointer " }}>
         Become a Seller
       </Typography>
