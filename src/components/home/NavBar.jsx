@@ -21,7 +21,7 @@ const NavBar = () => {
     <Component>
       {navData.map((curElem) => (
         <Box key={crypto.randomUUID()}>
-          <img src={curElem.url} alt="nav image" />
+          <img src={curElem.url} alt="nav" />
           <p>{curElem.text}</p>
         </Box>
       ))}
