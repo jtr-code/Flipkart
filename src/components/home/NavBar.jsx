@@ -1,10 +1,16 @@
-
+import { Box } from "@mui/material";
+import { navData } from "../../constants/data";
 
 const NavBar = () => {
   return (
-    <div>
-      <h1>navbar</h1>
-    </div>
+    <Box>
+      {navData.map((curElem) => (
+        <Box>
+          <img src={curElem.url} alt="images" />
+          <p>{curElem.text}</p>
+        </Box>
+      ))}
+    </Box>
   );
 };
 
