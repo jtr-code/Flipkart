@@ -12,6 +12,8 @@ const Component = styled(Box)`
   font-size: 14px;
   text-align: center;
   font-weight: 550;
+ 
+  }
 `;
 
 //      <--------------------------------------- styled section ends-------------------------------->
@@ -21,7 +23,7 @@ const NavBar = () => {
     <Component>
       {navData.map((curElem) => (
         <Box key={crypto.randomUUID()}>
-          <img src={curElem.url} alt="nav" />
+          <img style={{ width: 64, height: 64 }} src={curElem.url} alt="nav" />
           <p>{curElem.text}</p>
         </Box>
       ))}

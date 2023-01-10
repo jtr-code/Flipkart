@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div>
       <Header />
-      <Box style={{ marginTop: 57 }}>
+      <Box style={{ marginTop: 63 }}>
         <Home />
       </Box>
     </div>
