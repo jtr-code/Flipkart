@@ -6,7 +6,7 @@ import { navData } from "../../constants/data";
 
 const Component = styled(Box)`
   display: flex;
-  margin: 55px 350px 14px 300px;
+  margin: 55px 350px 10px 300px;
   justify-content: space-between;
   font-family: Roboto, Arial, sans-serif;
   text-align: center;
@@ -15,8 +15,7 @@ const Component = styled(Box)`
 
 const Text = styled(Typography)`
   font-size: 14px;
-  font-weight: 550; 
-  
+  font-weight: 550;
 `;
 
 //      <--------------------------------------- styled section ends-------------------------------->
