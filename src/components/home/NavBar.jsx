@@ -6,10 +6,12 @@ import { navData } from "../../constants/data";
 
 const Component = styled(Box)`
   display: flex;
-  margin: 55px 350px 10px 300px;
+  margin: 55px 350px 0 300px;
   justify-content: space-between;
   font-family: Roboto, Arial, sans-serif;
   text-align: center;
+  height:112px;
+
   }
 `;
 
