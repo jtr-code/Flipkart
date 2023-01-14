@@ -1,25 +1,8 @@
 import styled from "@emotion/styled";
 import { Box, Dialog, TextField, Typography, Button } from "@mui/material";
-// import ClearIcon from "@mui/icons-material/Clear";
-import {DialogActions} from "@material-ui/core/DialogActions";
-import "./styles.css";
-import { makeStyles } from "@mui/styles";
-import CloseIcon from "@material-ui/icons/Close";
-import { IconButton } from "@material-ui/core";
-//      <--------------------------------------- styled section starts------------------------------>
+import ClearIcon from "@mui/icons-material/Clear";
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    overflowY: "unset",
-  },
-  customizedButton: {
-    position: "absolute",
-    left: "95%",
-    top: "-9%",
-    backgroundColor: "lightgray",
-    color: "gray",
-  },
-}));
+//      <--------------------------------------- styled section starts------------------------------>
 
 const Component = styled(Box)`
   display: flex;
@@ -64,11 +47,10 @@ const LoginDialog = ({ open, setOpen }) => {
   const handleCloseDialog = () => {
     setOpen(false);
   };
-  const classes = useStyles();
+
   return (
     <Dialog
       open={open}
-      classes={{ paper: classes.paper }}
       onClose={handleCloseDialog}
       sx={{
         "& .MuiDialog-container": {
@@ -106,21 +88,13 @@ const LoginDialog = ({ open, setOpen }) => {
           </ReqBtn>
           <Typography>New to Flipkart?Create an Account</Typography>
         </Wrapper>
-        <DialogActions>
-          <IconButton className={classes.customizedButton}>
-            <CloseIcon />
-          </IconButton>
-          ...
-        </DialogActions>
-        {/* 
+
         <ClearIcon
           onClick={handleCloseDialog}
-        { classes.customizedButton}
           style={{
             cursor: "pointer",
-            backgroundColor: "yellow",
           }}
-        /> */}
+        />
       </Component>
     </Dialog>
   );
