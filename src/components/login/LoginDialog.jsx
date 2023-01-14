@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Dialog, TextField, Typography, Button } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
-import "./styles.css";
 
 //      <--------------------------------------- styled section starts------------------------------>
 
@@ -94,7 +93,6 @@ const LoginDialog = ({ open, setOpen }) => {
           onClick={handleCloseDialog}
           style={{
             cursor: "pointer",
-            backgroundColor: "yellow",
           }}
         />
       </Component>

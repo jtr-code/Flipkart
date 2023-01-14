@@ -3,6 +3,11 @@
 // import InputLabel from "@mui/material/InputLabel";
 import { Box, Button, styled, Typography } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useState } from "react";
+
+//component
+
+import LoginDialog from "../login/LoginDialog";
 
 //      <--------------------------------------- styled section starts-------------------------------->
 
@@ -40,11 +45,18 @@ const CartWrapper = styled(Box)`
 //      <--------------------------------------- styled section ends-------------------------------->
 
 const CustomButtons = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+    setOpen(true);
+  };
+
   return (
     <ButtonWrapper>
       <LoginButton
         variant="contained"
         sx={{ "&.MuiButtonBase-root:hover": { backgroundColor: "white" } }}
+        onClick={handleOpenDialog}
       >
         Login
       </LoginButton>
@@ -65,6 +77,7 @@ const CustomButtons = () => {
         <ShoppingCartIcon />
         <Typography>Cart</Typography>
       </CartWrapper>
+      <LoginDialog open={open} setOpen={setOpen} />
     </ButtonWrapper>
   );
 };

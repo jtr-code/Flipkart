@@ -12,6 +12,7 @@ import CustomButtons from "./CustomButtons";
 const StyledHeader = styled(AppBar)`
   background: #2874f0;
   height: 56px;
+  box-shadow: none;
 `;
 
 const ComponentLogo = styled(Box)`
