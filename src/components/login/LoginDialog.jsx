@@ -57,6 +57,7 @@ const Text = styled(Typography)`
   bottom: 32px;
   right: 0px;
   left: 0px;
+  cursor:pointer;
 `;
 
 //      <--------------------------------------- styled section ends-------------------------------->
