@@ -29,16 +29,34 @@ const ReqBtn = styled(Button)`
   background-color: #fb641b;
   text-transform: none;
   height: 48px;
-  width: 305px;
+  width: 100%;
+  border-radius: 2px;
   padding: 10px 20px 10px 20px;
+  font-weight: 550;
 `;
 
 const Wrapper = styled(Box)`
   padding: 56px 35px 16px 35px;
-  & > p {
-    color: #878787;
-    font-size: 12px;
-  }
+  position: relative;
+`;
+
+const TextWrapper = styled(Typography)`
+  color: #878787;
+  font-size: 11px;
+  padding: 10px 0px;
+  width: 100%;
+`;
+
+const Text = styled(Typography)`
+  color: #2874f0;
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  top: 476.406px;
+  bottom: 32px;
+  right: 0px;
+  left: 0px;
 `;
 
 //      <--------------------------------------- styled section ends-------------------------------->
@@ -73,11 +91,15 @@ const LoginDialog = ({ open, setOpen }) => {
           </Typography>
         </Image>
         <Wrapper>
-          <TextField label="Enter Email/Mobile Number" variant="standard" />
-          <Typography>
+          <TextField
+            label="Enter Email/Mobile Number"
+            variant="standard"
+            style={{ width: "100%" }}
+          />
+          <TextWrapper>
             By continuing, you agree to Flipkart's Terms of Use and Privacy
             Policy.
-          </Typography>
+          </TextWrapper>
           <ReqBtn
             variant="contained"
             sx={{
@@ -86,7 +108,7 @@ const LoginDialog = ({ open, setOpen }) => {
           >
             Request OTP
           </ReqBtn>
-          <Typography>New to Flipkart?Create an Account</Typography>
+          <Text>New to Flipkart?Create an Account</Text>
         </Wrapper>
 
         <ClearIcon
