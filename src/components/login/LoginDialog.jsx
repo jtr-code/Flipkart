@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { Box, Dialog, TextField, Typography, Button } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
+import { useState } from "react";
 
 //      <--------------------------------------- styled section starts------------------------------>
 
@@ -43,7 +44,7 @@ const Wrapper = styled(Box)`
 const TextWrapper = styled(Typography)`
   color: #878787;
   font-size: 11px;
-  padding: 10px 0px;
+  padding: 19px 0px;
   width: 100%;
 `;
 
@@ -57,14 +58,32 @@ const Text = styled(Typography)`
   bottom: 32px;
   right: 0px;
   left: 0px;
-  cursor:pointer;
+  cursor: pointer;
 `;
 
 //      <--------------------------------------- styled section ends-------------------------------->
-
+const accountInitialValues = {
+  login: {
+    view: "login",
+    heading: "Login",
+    subHeading: "Get access to your Orders, Wishlist and Recommendations",
+  },
+  signup: {
+    view: "signup",
+    heading: "Looks like you're new here!",
+    subHeading: "Sign up with your mobile number to get started",
+  },
+};
 const LoginDialog = ({ open, setOpen }) => {
+  const [account, toggleAccount] = useState(accountInitialValues.login);
+
   const handleCloseDialog = () => {
     setOpen(false);
+    toggleAccount(accountInitialValues.login);
+  };
+
+  const toggleSignup = () => {
+    toggleAccount(accountInitialValues.signup);
   };
 
   return (
@@ -85,32 +104,65 @@ const LoginDialog = ({ open, setOpen }) => {
           <Typography
             style={{ fontWeight: "bold", fontSize: "28px", color: "#fff" }}
           >
-            Login
+            {account.heading}
           </Typography>
-          <Typography>
-            Get access to your Orders, Wishlist and Recommendations
-          </Typography>
+          <Typography>{account.subHeading}</Typography>
         </Image>
-        <Wrapper>
-          <TextField
-            label="Enter Email/Mobile Number"
-            variant="standard"
-            style={{ width: "100%" }}
-          />
-          <TextWrapper>
-            By continuing, you agree to Flipkart's Terms of Use and Privacy
-            Policy.
-          </TextWrapper>
-          <ReqBtn
-            variant="contained"
-            sx={{
-              "&.MuiButtonBase-root:hover": { backgroundColor: "#fb641b" },
-            }}
-          >
-            Request OTP
-          </ReqBtn>
-          <Text>New to Flipkart?Create an Account</Text>
-        </Wrapper>
+        {account.view === "login" ? (
+          <Wrapper>
+            <TextField
+              label="Enter Email/Mobile Number"
+              variant="standard"
+              style={{ width: "100%" }}
+            />
+            <TextWrapper>
+              By continuing, you agree to Flipkart's Terms of Use and Privacy
+              Policy.
+            </TextWrapper>
+            <ReqBtn
+              variant="contained"
+              sx={{
+                "&.MuiButtonBase-root:hover": { backgroundColor: "#fb641b" },
+              }}
+            >
+              Request OTP
+            </ReqBtn>
+            <Text onClick={() => toggleSignup()}>
+              New to Flipkart?Create an Account
+            </Text>
+          </Wrapper>
+        ) : (
+          <Wrapper>
+            <TextField
+              label="Enter Mobile Number"
+              variant="standard"
+              style={{ width: "100%" }}
+            />
+            <TextWrapper>
+              By continuing, you agree to Flipkart's Terms of Use and Privacy
+              Policy.
+            </TextWrapper>
+            <ReqBtn
+              variant="contained"
+              sx={{
+                "&.MuiButtonBase-root:hover": { backgroundColor: "#fb641b" },
+              }}
+            >
+              Continue
+            </ReqBtn>
+            <ReqBtn
+              style={{
+                backgroundColor: "#fff",
+                color: "#2874F0",
+                boxShadow: "rgba(0, 0, 0, 0.2) 0px 2px 4px 0px",
+                padding: "10px 20px 10px 20px",
+                margin: " 16px 0 0 0",
+              }}
+            >
+              Existing User? Log in
+            </ReqBtn>
+          </Wrapper>
+        )}
 
         <ClearIcon
           onClick={handleCloseDialog}
