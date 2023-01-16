@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const URL = " http://localhost:8000";
+const URL = "http://localhost:8000";
 
 export const authenticateUserSignup = async (data) => {
   try {
     return await axios.post(`${URL}/signup`, data);
   } catch (error) {
-    console.log("Error with signup API", error.message);
+    console.error(" Error in signup API", error.message);
   }
 };
