@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Box, Dialog, TextField, Typography, Button } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useState } from "react";
+import { authenticateUserSignup } from "../../service/api";
 
 //      <--------------------------------------- styled section starts------------------------------>
 
@@ -62,6 +63,9 @@ const Text = styled(Typography)`
 `;
 
 //      <--------------------------------------- styled section ends-------------------------------->
+
+//      <--------------------------------------- STATE INITIAL-VALUES-------------------------------------->
+
 const accountInitialValues = {
   login: {
     view: "login",
@@ -74,8 +78,19 @@ const accountInitialValues = {
     subHeading: "Sign up with your mobile number to get started",
   },
 };
+
+const setSignupInitialValues = {
+  mobileNumber: "",
+};
+
+//      <--------------------------------------- STATE INITIAL-VALUES ENDS-------------------------------->
+
 const LoginDialog = ({ open, setOpen }) => {
   const [account, toggleAccount] = useState(accountInitialValues.login);
+
+  const [signup, setSignup] = useState(setSignupInitialValues);
+
+  //      <--------------------------------------- FUNCTIONS -------------------------------->
 
   const handleCloseDialog = () => {
     setOpen(false);
@@ -85,6 +100,19 @@ const LoginDialog = ({ open, setOpen }) => {
   const toggleSignup = () => {
     toggleAccount(accountInitialValues.signup);
   };
+
+  const onInputChange = (event) => {
+    setSignup({
+      ...signup,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const signUpUser = async () => {
+    let response = await authenticateUserSignup(signup);
+  };
+
+  //      <--------------------------------------- FUNCTIONS ENDS-------------------------------->
 
   return (
     <Dialog
@@ -108,6 +136,9 @@ const LoginDialog = ({ open, setOpen }) => {
           </Typography>
           <Typography>{account.subHeading}</Typography>
         </Image>
+
+        {/* login */}
+
         {account.view === "login" ? (
           <Wrapper>
             <TextField
@@ -132,11 +163,15 @@ const LoginDialog = ({ open, setOpen }) => {
             </Text>
           </Wrapper>
         ) : (
+          // Signup
+
           <Wrapper>
             <TextField
               label="Enter Mobile Number"
               variant="standard"
               style={{ width: "100%" }}
+              name="mobileNumber"
+              onChange={(event) => onInputChange(event)}
             />
             <TextWrapper>
               By continuing, you agree to Flipkart's Terms of Use and Privacy
@@ -147,6 +182,7 @@ const LoginDialog = ({ open, setOpen }) => {
               sx={{
                 "&.MuiButtonBase-root:hover": { backgroundColor: "#fb641b" },
               }}
+              onClick={() => signUpUser()}
             >
               Continue
             </ReqBtn>
@@ -163,7 +199,6 @@ const LoginDialog = ({ open, setOpen }) => {
             </ReqBtn>
           </Wrapper>
         )}
-
         <ClearIcon
           onClick={handleCloseDialog}
           style={{
