@@ -3,6 +3,12 @@ import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 
 import { useState } from "react";
 
+const Wrapper = styled(Box)`
+  margin-left: 45px;
+  height: 32px;
+  width: 130px;
+`;
+
 const Component = styled(Menu)`
   margin-top: 5px;
 `;
@@ -27,9 +33,9 @@ const Profile = ({ name, setName }) => {
 
   return (
     <>
-      <Box onClick={handleClick}>
-        <Typography style={{ marginTop: 2, cursor: "pointer" }}>
-          {name}
+      <Wrapper onClick={handleClick}>
+        <Typography style={{ cursor: "pointer", marginTop: 5 }}>
+          +91&nbsp;{name}
         </Typography>
         <Component anchorEl={open} open={Boolean(open)} onClose={handleClose}>
           <MenuItem
@@ -46,7 +52,7 @@ const Profile = ({ name, setName }) => {
             <LogOut>Logout</LogOut>
           </MenuItem>
         </Component>
-      </Box>
+      </Wrapper>
     </>
   );
 };
