@@ -9,6 +9,7 @@ import { useContext, useState } from "react";
 
 import LoginDialog from "../login/LoginDialog";
 import { DataContext } from "../../context/DataProvider";
+import Profile from "./Profile";
 
 //      <--------------------------------------- styled section starts-------------------------------->
 
@@ -52,12 +53,12 @@ const CustomButtons = () => {
     setOpen(true);
   };
 
-  const { name } = useContext(DataContext);
+  const { name, setName } = useContext(DataContext);
 
   return (
     <ButtonWrapper>
       {name ? (
-        <Typography>+91&nbsp;{name}</Typography>
+        <Profile name={name} setName={setName} />
       ) : (
         <LoginButton
           variant="contained"
