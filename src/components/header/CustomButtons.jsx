@@ -3,11 +3,12 @@
 // import InputLabel from "@mui/material/InputLabel";
 import { Box, Button, styled, Typography } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 //component
 
 import LoginDialog from "../login/LoginDialog";
+import { DataContext } from "../../context/DataProvider";
 
 //      <--------------------------------------- styled section starts-------------------------------->
 
@@ -51,15 +52,21 @@ const CustomButtons = () => {
     setOpen(true);
   };
 
+  const { name } = useContext(DataContext);
+
   return (
     <ButtonWrapper>
-      <LoginButton
-        variant="contained"
-        sx={{ "&.MuiButtonBase-root:hover": { backgroundColor: "white" } }}
-        onClick={handleOpenDialog}
-      >
-        Login
-      </LoginButton>
+      {name ? (
+        <Typography>+91&nbsp;{name}</Typography>
+      ) : (
+        <LoginButton
+          variant="contained"
+          sx={{ "&.MuiButtonBase-root:hover": { backgroundColor: "white" } }}
+          onClick={handleOpenDialog}
+        >
+          Login
+        </LoginButton>
+      )}
       <Typography style={{ marginTop: 5, width: 130, cursor: "pointer " }}>
         Become a Seller
       </Typography>

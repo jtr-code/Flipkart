@@ -3,6 +3,8 @@ import { Box, Dialog, TextField, Typography, Button } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useState } from "react";
 import { authenticateUserSignup } from "../../service/api";
+import { useContext } from "react";
+import { DataContext } from "../../context/DataProvider";
 
 //      <--------------------------------------- styled section starts------------------------------>
 
@@ -90,6 +92,8 @@ const LoginDialog = ({ open, setOpen }) => {
 
   const [signup, setSignup] = useState(setSignupInitialValues);
 
+  const { setName } = useContext(DataContext);
+
   //      <--------------------------------------- FUNCTIONS -------------------------------->
 
   const handleCloseDialog = () => {
@@ -110,6 +114,10 @@ const LoginDialog = ({ open, setOpen }) => {
 
   const signUpUser = async () => {
     let response = await authenticateUserSignup(signup);
+    console.log(response);
+    if (!response) return;
+    handleCloseDialog();
+    setName(signup.mobileNumber);
   };
 
   //      <--------------------------------------- FUNCTIONS ENDS-------------------------------->
