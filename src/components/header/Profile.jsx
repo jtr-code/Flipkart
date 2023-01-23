@@ -1,21 +1,26 @@
 import { Typography, Box, Menu, MenuItem, styled } from "@mui/material";
 import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
-
 import { useState } from "react";
+
+//      <--------------------------------------- styled section starts------------------------------>
 
 const Wrapper = styled(Box)`
   margin-left: 45px;
   height: 32px;
   width: 130px;
+
 `;
 
 const Component = styled(Menu)`
   margin-top: 5px;
 `;
+
 const LogOut = styled(Typography)`
   font-size: 14px;
   margin-left: 20px;
 `;
+
+//      <--------------------------------------- styled section ends-------------------------------->
 const Profile = ({ name, setName }) => {
   const [open, setOpen] = useState(false);
 
@@ -35,7 +40,7 @@ const Profile = ({ name, setName }) => {
     <>
       <Wrapper onClick={handleClick}>
         <Typography style={{ cursor: "pointer", marginTop: 5 }}>
-          +91&nbsp;{name}
+          {name}
         </Typography>
         <Component anchorEl={open} open={Boolean(open)} onClose={handleClose}>
           <MenuItem

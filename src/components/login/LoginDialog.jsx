@@ -2,7 +2,10 @@ import styled from "@emotion/styled";
 import { Box, Dialog, TextField, Typography, Button } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import { useState } from "react";
-import { authenticateUserSignup } from "../../service/api";
+import {
+  authenticateLoginUser,
+  authenticateUserSignup,
+} from "../../service/api";
 import { useContext } from "react";
 import { DataContext } from "../../context/DataProvider";
 
@@ -40,15 +43,19 @@ const ReqBtn = styled(Button)`
 `;
 
 const Wrapper = styled(Box)`
-  padding: 56px 35px 16px 35px;
+  padding: 46px 35px 46px 35px;
   position: relative;
+  display:flex;
+  flex-direction:column;
 `;
+
 
 const TextWrapper = styled(Typography)`
   color: #878787;
   font-size: 11px;
   padding: 19px 0px;
   width: 100%;
+  
 `;
 
 const Text = styled(Typography)`
@@ -63,6 +70,7 @@ const Text = styled(Typography)`
   left: 0px;
   cursor: pointer;
 `;
+
 
 //      <--------------------------------------- styled section ends-------------------------------->
 
@@ -82,15 +90,25 @@ const accountInitialValues = {
 };
 
 const setSignupInitialValues = {
-  mobileNumber: "",
+  firstname: "",
+  lastname: "",
+  username: "",
+  email: "",
+  password: "",
+  phone: "",
 };
 
+const loginInitialValue = {
+  phone: "",
+};
 //      <--------------------------------------- STATE INITIAL-VALUES ENDS-------------------------------->
 
 const LoginDialog = ({ open, setOpen }) => {
   const [account, toggleAccount] = useState(accountInitialValues.login);
 
   const [signup, setSignup] = useState(setSignupInitialValues);
+
+  const [login, setLogin] = useState(loginInitialValue);
 
   const { setName } = useContext(DataContext);
 
@@ -117,7 +135,19 @@ const LoginDialog = ({ open, setOpen }) => {
     console.log(response);
     if (!response) return;
     handleCloseDialog();
-    setName(signup.mobileNumber);
+    setName(signup.firstname);
+  };
+
+  const onValueChange = (event) => {
+    setLogin({
+      ...login,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const loginUser = async () => {
+    let response = await authenticateLoginUser(login);
+    console.log(response);
   };
 
   //      <--------------------------------------- FUNCTIONS ENDS-------------------------------->
@@ -153,6 +183,8 @@ const LoginDialog = ({ open, setOpen }) => {
               label="Enter Email/Mobile Number"
               variant="standard"
               style={{ width: "100%" }}
+              onChange={(event) => onValueChange(event)}
+              name="phone"
             />
             <TextWrapper>
               By continuing, you agree to Flipkart's Terms of Use and Privacy
@@ -163,6 +195,7 @@ const LoginDialog = ({ open, setOpen }) => {
               sx={{
                 "&.MuiButtonBase-root:hover": { backgroundColor: "#fb641b" },
               }}
+              onClick={() => loginUser()}
             >
               Request OTP
             </ReqBtn>
@@ -175,10 +208,45 @@ const LoginDialog = ({ open, setOpen }) => {
 
           <Wrapper>
             <TextField
-              label="Enter Mobile Number"
+              label="Enter Firstname"
               variant="standard"
               style={{ width: "100%" }}
-              name="mobileNumber"
+              name="firstname"
+              onChange={(event) => onInputChange(event)}
+            />
+            <TextField
+              label="Enter Lastname"
+              variant="standard"
+              style={{ width: "100%" }}
+              name="lastname"
+              onChange={(event) => onInputChange(event)}
+            />
+            <TextField
+              label="Enter Username"
+              variant="standard"
+              style={{ width: "100%" }}
+              name="username"
+              onChange={(event) => onInputChange(event)}
+            />
+            <TextField
+              label="Enter Email"
+              variant="standard"
+              style={{ width: "100%" }}
+              name="email"
+              onChange={(event) => onInputChange(event)}
+            />
+            <TextField
+              label="Enter Password"
+              variant="standard"
+              style={{ width: "100%" }}
+              name="password"
+              onChange={(event) => onInputChange(event)}
+            />
+            <TextField
+              label="Enter Phone"
+              variant="standard"
+              style={{ width: "100%" }}
+              name="phone"
               onChange={(event) => onInputChange(event)}
             />
             <TextWrapper>

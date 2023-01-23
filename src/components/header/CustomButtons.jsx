@@ -1,6 +1,3 @@
-// import Select, { SelectChangeEvent } from "@mui/material/Select";
-// // import MenuItem from "@mui/material/MenuItem";
-// import InputLabel from "@mui/material/InputLabel";
 import { Box, Button, styled, Typography } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useContext, useState } from "react";
@@ -71,13 +68,6 @@ const CustomButtons = () => {
       <Typography style={{ marginTop: 5, width: 130, cursor: "pointer " }}>
         Become a Seller
       </Typography>
-      {/* <InputLabel id="More-label">More</InputLabel>
-      <Select label="More-label">
-        <MenuItem value={10}>Notification Preferences</MenuItem>
-        <MenuItem value={20}>24/7 Customer Support</MenuItem>
-        <MenuItem value={30}>Advertise</MenuItem>
-        <MenuItem value={30}>Download App</MenuItem>
-      </Select> */}
       <Typography style={{ marginTop: 5, paddingRight: 10, cursor: "pointer" }}>
         More
       </Typography>
