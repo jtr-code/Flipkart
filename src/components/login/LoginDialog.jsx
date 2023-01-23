@@ -71,13 +71,12 @@ const Text = styled(Typography)`
   cursor: pointer;
 `;
 
-
 //      <--------------------------------------- styled section ends-------------------------------->
 
 //      <--------------------------------------- STATE INITIAL-VALUES-------------------------------------->
 
 const accountInitialValues = {
-  login: {
+  login: {  
     view: "login",
     heading: "Login",
     subHeading: "Get access to your Orders, Wishlist and Recommendations",

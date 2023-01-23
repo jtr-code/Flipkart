@@ -39,7 +39,7 @@ const Profile = ({ name, setName }) => {
   return (
     <>
       <Wrapper onClick={handleClick}>
-        <Typography style={{ cursor: "pointer", marginTop: 5 }}>
+        <Typography style={{ cursor: "pointer", marginTop: 5,marginLeft:50 }}>
           {name}
         </Typography>
         <Component anchorEl={open} open={Boolean(open)} onClose={handleClose}>
