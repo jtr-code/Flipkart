@@ -45,17 +45,15 @@ const ReqBtn = styled(Button)`
 const Wrapper = styled(Box)`
   padding: 46px 35px 46px 35px;
   position: relative;
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
 `;
-
 
 const TextWrapper = styled(Typography)`
   color: #878787;
   font-size: 11px;
   padding: 19px 0px;
   width: 100%;
-  
 `;
 
 const Text = styled(Typography)`
@@ -71,12 +69,21 @@ const Text = styled(Typography)`
   cursor: pointer;
 `;
 
+const Error = styled(Typography)`
+  font-size: 10px;
+  color: #ff6161;
+  line-height: 0;
+  margin-top: 10px;
+  font-weight: 600;
+  margin-bottom:15px;
+`;
+
 //      <--------------------------------------- styled section ends-------------------------------->
 
 //      <--------------------------------------- STATE INITIAL-VALUES-------------------------------------->
 
 const accountInitialValues = {
-  login: {  
+  login: {
     view: "login",
     heading: "Login",
     subHeading: "Get access to your Orders, Wishlist and Recommendations",
@@ -98,7 +105,8 @@ const setSignupInitialValues = {
 };
 
 const loginInitialValue = {
-  phone: "",
+  username: "",
+  password: "",
 };
 //      <--------------------------------------- STATE INITIAL-VALUES ENDS-------------------------------->
 
@@ -109,6 +117,8 @@ const LoginDialog = ({ open, setOpen }) => {
 
   const [login, setLogin] = useState(loginInitialValue);
 
+  const [error, setError] = useState(false);
+
   const { setName } = useContext(DataContext);
 
   //      <--------------------------------------- FUNCTIONS -------------------------------->
@@ -116,6 +126,7 @@ const LoginDialog = ({ open, setOpen }) => {
   const handleCloseDialog = () => {
     setOpen(false);
     toggleAccount(accountInitialValues.login);
+    setError(false);
   };
 
   const toggleSignup = () => {
@@ -147,6 +158,12 @@ const LoginDialog = ({ open, setOpen }) => {
   const loginUser = async () => {
     let response = await authenticateLoginUser(login);
     console.log(response);
+    if (response.status === 200) {
+      handleCloseDialog();
+      setName(response.data.data.firstname);
+    } else {
+      setError(true);
+    }
   };
 
   //      <--------------------------------------- FUNCTIONS ENDS-------------------------------->
@@ -179,11 +196,19 @@ const LoginDialog = ({ open, setOpen }) => {
         {account.view === "login" ? (
           <Wrapper>
             <TextField
-              label="Enter Email/Mobile Number"
+              label="Enter Username"
               variant="standard"
               style={{ width: "100%" }}
               onChange={(event) => onValueChange(event)}
-              name="phone"
+              name="username"
+            />
+            {error && <Error>Please enter valid username or password</Error>}
+            <TextField
+              label="Enter Password"
+              variant="standard"
+              style={{ width: "100%" }}
+              onChange={(event) => onValueChange(event)}
+              name="password"
             />
             <TextWrapper>
               By continuing, you agree to Flipkart's Terms of Use and Privacy
@@ -196,7 +221,7 @@ const LoginDialog = ({ open, setOpen }) => {
               }}
               onClick={() => loginUser()}
             >
-              Request OTP
+              Login
             </ReqBtn>
             <Text onClick={() => toggleSignup()}>
               New to Flipkart?Create an Account
