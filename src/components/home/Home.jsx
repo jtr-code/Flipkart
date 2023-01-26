@@ -1,6 +1,9 @@
 import NavBar from "./NavBar";
 import Banner from "./Banner";
 import { Box, styled } from "@mui/system";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../../redux/actions/productActions";
 
 const Component = styled(Box)`
   padding: 8px;
@@ -9,6 +12,14 @@ const Component = styled(Box)`
 `;
 
 const Home = () => {
+  useSelector((state) => state.getProducts);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
+
   return (
     <>
       <NavBar />
