@@ -6,17 +6,24 @@ import Slide from "./Slide";
 const Component = styled(Box)`
   display: flex;
 `;
-const LeftComponent = styled(Box)`
-  width: 83%;
-`;
-const RightComponent = styled(Box)`
-  background: #fff;
-  padding: 5px;
-  margin-top: 10px;
-  margin-left: 10px;
-  width: 16%;
-  text-align: center;
-`;
+const LeftComponent = styled(Box)(({ theme }) => ({
+  width: "83%",
+  [theme.breakpoints.down("md")]: {
+    width: "100%",
+  },
+}));
+
+const RightComponent = styled(Box)(({ theme }) => ({
+  background: "#fff",
+  padding: "5px",
+  marginTop: "10px",
+  marginLeft: "10px",
+  width: "16%",
+  textAlign: "center",
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+}));
 
 //      <--------------------------------------- styled section ends-------------------------------->
 

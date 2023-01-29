@@ -1,16 +1,19 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { bannerData } from "../../constants/data";
-import styled from "@emotion/styled";
-import { Box } from "@mui/system";
+import { Box, styled } from "@mui/material";
 
 //      <--------------------------------------- styled section starts------------------------------>
 
-const ImageContainer = styled("img")({
+const ImageContainer = styled("img")(({ theme }) => ({
   width: "100%",
-  height: "280px",
+  height: "300px",
   objectFit: "contain",
-});
+  [theme.breakpoints.down("md")]: {
+    height: 180,
+    objectFit: "cover",
+  },
+}));
 
 //      <--------------------------------------- styled section ends-------------------------------->
 const responsive = {

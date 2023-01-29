@@ -6,6 +6,7 @@ import { Box, styled } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../redux/actions/productActions";
+import MidSection from "./MidSection";
 
 const Component = styled(Box)`
   padding: 8px;
@@ -28,6 +29,7 @@ const Home = () => {
       <Component>
         <Banner />
         <MidSlide products={products} title="Deal of the Day" timer={true} />
+        <MidSection />
         <Slide products={products} title="Discounts for You" timer={false} />
         <Slide products={products} title="Suggested Items" timer={false} />
         <Slide products={products} title="Top Selection" timer={false} />
