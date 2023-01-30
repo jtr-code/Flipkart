@@ -8,7 +8,6 @@ import { Box, styled } from "@mui/material";
 const ImageContainer = styled("img")(({ theme }) => ({
   width: "100%",
   height: "300px",
-  objectFit: "contain",
   [theme.breakpoints.down("md")]: {
     height: 180,
     objectFit: "cover",
