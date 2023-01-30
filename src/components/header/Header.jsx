@@ -4,6 +4,7 @@ import { AppBar, Toolbar, styled, Box, Typography } from "@mui/material";
 
 import Search from "./Search";
 import CustomButtons from "./CustomButtons";
+import { Link } from "react-router-dom";
 
 // <---------------------------------------------Components import ends------------------------------------------>
 
@@ -15,7 +16,7 @@ const StyledHeader = styled(AppBar)`
   box-shadow: none;
 `;
 
-const ComponentLogo = styled(Box)`
+const ComponentLogo = styled(Link)`
   margin-left: 368px;
   cursor: pointer;
   font-size: 14px;
@@ -52,7 +53,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <Toolbar style={{ minHeight: 56 }}>
-        <ComponentLogo>
+        <ComponentLogo to={'/'} style={{textDecoration:"none"}}>
           <img src={logoURL} alt="Flipkart" style={{ width: "75px" }} />
           <ComponentPlusLogo>
             <SubHeading>
