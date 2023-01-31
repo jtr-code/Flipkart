@@ -53,7 +53,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <Toolbar style={{ minHeight: 56 }}>
-        <ComponentLogo to={'/'} style={{textDecoration:"none"}}>
+        <ComponentLogo to={"/"} style={{ textDecoration: "none" }}>
           <img src={logoURL} alt="Flipkart" style={{ width: "75px" }} />
           <ComponentPlusLogo>
             <SubHeading>
