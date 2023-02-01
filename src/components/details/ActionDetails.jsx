@@ -10,18 +10,21 @@ const Image = styled("img")({
   padding: "15px 20px",
   border: "1px solid #f0f0f0",
   width: "90%",
+ 
 });
 
 const StyledButton = styled(Button)`
-  width: 48%;
+  width: 44%;
   height: 50px;
   border-radius: 2px;
+  left:20px;
 `;
 
 const ActionDetails = ({ product }) => {
   return (
     <LeftContainer>
       <Image src={product.detailUrl} alt="singleproduct" />
+
       <StyledButton
         variant="contained"
         style={{ marginRight: 10, background: "#ff9f00" }}
