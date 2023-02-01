@@ -1,6 +1,8 @@
 import { Box, Button, styled } from "@mui/material";
 import { ShoppingCart as Cart, FlashOn as Flash } from "@mui/icons-material";
 
+//      <--------------------------------------- styled section starts-------------------------------->
+
 const LeftContainer = styled(Box)`
   min-width: 40%;
   padding: 40px 0 0 80px;
@@ -19,6 +21,7 @@ const StyledButton = styled(Button)`
   border-radius: 2px;
   left:20px;
 `;
+//      <--------------------------------------- styled section ends-------------------------------->
 
 const ActionDetails = ({ product }) => {
   return (
