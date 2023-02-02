@@ -1,4 +1,12 @@
-import { AppBar, Toolbar, styled, Box, Typography } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  styled,
+  Box,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
 // <---------------------------------------------Components import starts---------------------------------------->
 
@@ -16,11 +24,15 @@ const StyledHeader = styled(AppBar)`
   box-shadow: none;
 `;
 
-const ComponentLogo = styled(Link)`
-  margin-left: 368px;
-  cursor: pointer;
-  font-size: 14px;
-`;
+const ComponentLogo = styled(Link)(({ theme }) => ({
+  marginLeft: "368px",
+  cursor: "pointer",
+  fontSize: "14px",
+
+  [theme.breakpoints.down("md")]: {
+    margin: 0,
+  },
+}));
 
 const ComponentPlusLogo = styled(Box)`
   display: flex;
@@ -42,6 +54,21 @@ const PlusImage = styled("img")({
   marginTop: -4,
 });
 
+const CustomButtonWrapper = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+}));
+
+const MenuIconWrapper = styled(IconButton)(({ theme }) => ({
+  display: "none",
+  color: "inherit",
+
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
+}));
+
 //      <--------------------------------------- styled section ends-------------------------------->
 
 const logoURL =
@@ -53,6 +80,9 @@ const Header = () => {
   return (
     <StyledHeader>
       <Toolbar style={{ minHeight: 56 }}>
+        <MenuIconWrapper>
+          <MenuIcon />
+        </MenuIconWrapper>
         <ComponentLogo to={"/"} style={{ textDecoration: "none" }}>
           <img src={logoURL} alt="Flipkart" style={{ width: "75px" }} />
           <ComponentPlusLogo>
@@ -64,9 +94,9 @@ const Header = () => {
           </ComponentPlusLogo>
         </ComponentLogo>
         <Search />
-        <Box>
+        <CustomButtonWrapper>
           <CustomButtons />
-        </Box>
+        </CustomButtonWrapper>
       </Toolbar>
     </StyledHeader>
   );
