@@ -5,14 +5,18 @@ import {
   Box,
   IconButton,
   Typography,
+  Drawer,
+  List,
+  ListItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 // <---------------------------------------------Components import starts---------------------------------------->
 
 import Search from "./Search";
 import CustomButtons from "./CustomButtons";
-import { Link } from "react-router-dom";
 
 // <---------------------------------------------Components import ends------------------------------------------>
 
@@ -77,12 +81,33 @@ const subURL =
   "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png";
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleMenuOpen = () => {
+    setOpen(true);
+  };
+  const handleMenuClose = () => {
+    setOpen(false);
+  };
+
+  const list=()=>(
+    <Box>
+      <List>
+        <ListItem button>
+          <CustomButtons/>
+        </ListItem>
+      </List>
+    </Box>
+  )
   return (
     <StyledHeader>
       <Toolbar style={{ minHeight: 56 }}>
-        <MenuIconWrapper>
+        <MenuIconWrapper onClick={handleMenuOpen}>
           <MenuIcon />
         </MenuIconWrapper>
+        <Drawer open={open} onClose={handleMenuClose}>
+          {list()}
+        </Drawer>
         <ComponentLogo to={"/"} style={{ textDecoration: "none" }}>
           <img src={logoURL} alt="Flipkart" style={{ width: "75px" }} />
           <ComponentPlusLogo>
