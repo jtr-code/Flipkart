@@ -13,7 +13,17 @@ import Profile from "./Profile";
 const ButtonWrapper = styled(Box)(({ theme }) => ({
   display: "flex",
   margin: " 0 3% 0 auto",
-  "& > * ": {
+  "& > button": {
+    marginRight: "40px",
+    alignItems: "center",
+    fontSize: "16px",
+  },
+  "& > p": {
+    marginRight: "40px",
+    alignItems: "center",
+    fontSize: "16px",
+  },
+  "& > div": {
     marginRight: "40px",
     alignItems: "center",
     fontSize: "16px",
