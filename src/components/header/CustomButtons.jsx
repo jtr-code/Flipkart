@@ -18,16 +18,12 @@ const ButtonWrapper = styled(Box)(({ theme }) => ({
     alignItems: "center",
     fontSize: "16px",
   },
-  "& > p": {
-    marginRight: "40px",
+  "& > *": {
+    marginRight: "40px !important",
     alignItems: "center",
     fontSize: "16px",
   },
-  "& > div": {
-    marginRight: "40px",
-    alignItems: "center",
-    fontSize: "16px",
-  },
+
   [theme.breakpoints.down("md")]: {
     display: "block ",
   },
