@@ -90,15 +90,15 @@ const Header = () => {
     setOpen(false);
   };
 
-  const list=()=>(
-    <Box>
+  const list = () => (
+    <Box style={{ width: 200 }} onClick={handleMenuClose}>
       <List>
         <ListItem button>
-          <CustomButtons/>
+          <CustomButtons />
         </ListItem>
       </List>
     </Box>
-  )
+  );
   return (
     <StyledHeader>
       <Toolbar style={{ minHeight: 56 }}>

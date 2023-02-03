@@ -10,18 +10,18 @@ import Profile from "./Profile";
 
 //      <--------------------------------------- styled section starts-------------------------------->
 
-const ButtonWrapper = styled(Box)`
-  display: flex;
-  margin: 0 3% 0 auto;
-  & > button,
-  & > p,
-  & > div {
-    margin-right: 40px;
-    align-items: center;
-    font-size: 16px;
-  }
-`;
-
+const ButtonWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  margin: " 0 3% 0 auto",
+  "& > * ": {
+    marginRight: "40px",
+    alignItems: "center",
+    fontSize: "16px",
+  },
+  [theme.breakpoints.down("md")]: {
+    display: "block ",
+  },
+}));
 const LoginButton = styled(Button)`
   color: #2874f0;
   cursor: pointer;
@@ -36,11 +36,13 @@ const LoginButton = styled(Button)`
   width: 130px;
 `;
 
-const CartWrapper = styled(Box)`
-  display: flex;
-  cursor: pointer;
-`;
-
+const CartWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  cursor: "pointer",
+  [theme.breakpoints.down("md")]: {
+    display: "block",
+  },
+}));
 //      <--------------------------------------- styled section ends-------------------------------->
 
 const CustomButtons = () => {

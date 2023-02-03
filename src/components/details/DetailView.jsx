@@ -15,9 +15,9 @@ const Component = styled(Box)`
 const Container = styled(Grid)(({ theme }) => ({
   background: "#FFFFF",
   display: "flex",
-  [theme.breakpoints.down['md']]:{
-    margin:0,
-  }
+  [theme.breakpoints.down["md"]]: {
+    margin: 0,
+  },
 }));
 
 const RightContainer = styled(Grid)`
