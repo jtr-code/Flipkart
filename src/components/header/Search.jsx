@@ -83,7 +83,11 @@ const Search = () => {
             )
             .map((product) => (
               <ListItem>
-                <Link to={`/product/${product.id}`} onClick={() => setText("")}>
+                <Link
+                  to={`/product/${product.id}`}
+                  onClick={() => setText("")}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
                   {product.title.longTitle}
                 </Link>
               </ListItem>
