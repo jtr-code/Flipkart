@@ -1,13 +1,15 @@
 import { Box, Typography, styled, Button } from "@mui/material";
 import { addEllipsis } from "../../utils/common-utils";
 import GroupedBtn from "./ButtonGroup";
+import { removeFromCart } from "../../redux/actions/cartActions";
+import { useDispatch } from "react-redux";
 
 //      <--------------------------------------- styled section starts---------------------------------->
 
 const Component = styled(Box)`
   border-top: 1px solid #f0f0f0;
   display: flex;
-  background:#fff;
+  background: #fff;
 `;
 const LeftComponent = styled(Box)`
   margin: 20px;
@@ -33,6 +35,13 @@ const RemoveBtn = styled(Button)`
 const CartItem = ({ item }) => {
   const fassured =
     "https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png";
+
+  const dispatch = useDispatch();
+
+  const removeItemFromCart = (id) => {
+    dispatch(removeFromCart(id));
+  };
+
   return (
     <Component>
       <LeftComponent>
@@ -65,7 +74,9 @@ const CartItem = ({ item }) => {
             off
           </Box>
         </Typography>
-        <RemoveBtn>Remove</RemoveBtn>
+        <RemoveBtn onClick={() => removeItemFromCart(item.id)}>
+          Remove
+        </RemoveBtn>
       </Box>
     </Component>
   );

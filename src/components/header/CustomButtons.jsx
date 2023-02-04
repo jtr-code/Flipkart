@@ -1,6 +1,8 @@
-import { Box, Button, styled, Typography } from "@mui/material";
+import { Box, Button, styled, Typography, Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 //component
 
@@ -42,9 +44,11 @@ const LoginButton = styled(Button)`
   width: 130px;
 `;
 
-const CartWrapper = styled(Box)(({ theme }) => ({
+const CartWrapper = styled(Link)(({ theme }) => ({
   display: "flex",
   cursor: "pointer",
+  textDecoration: "none",
+  color: "inherit",
   [theme.breakpoints.down("md")]: {
     display: "block",
   },
@@ -59,6 +63,8 @@ const CustomButtons = () => {
   };
 
   const { name, setName } = useContext(DataContext);
+
+  const { cartItems } = useSelector((state) => state.cart);
 
   return (
     <ButtonWrapper>
@@ -79,9 +85,11 @@ const CustomButtons = () => {
       <Typography style={{ marginTop: 5, paddingRight: 10, cursor: "pointer" }}>
         More
       </Typography>
-      <CartWrapper>
-        <ShoppingCartIcon />
-        <Typography>Cart</Typography>
+      <CartWrapper to="/cart">
+        <Badge badgeContent={cartItems?.length} color="secondary">
+          <ShoppingCartIcon />
+        </Badge>
+        <Typography style={{ marginLeft: 10 }}>Cart</Typography>
       </CartWrapper>
       <LoginDialog open={open} setOpen={setOpen} />
     </ButtonWrapper>
