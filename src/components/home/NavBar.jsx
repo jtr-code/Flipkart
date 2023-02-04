@@ -25,14 +25,20 @@ const Text = styled(Typography)`
 
 const NavBar = () => {
   return (
-    <Component>
-      {navData.map((curElem) => (
-        <Box key={crypto.randomUUID()}>
-          <img style={{ width: 64, height: 64 }} src={curElem.url} alt="nav" />
-          <Text>{curElem.text}</Text>
-        </Box>
-      ))}
-    </Component>
+    <Box style={{ background: "#fff" }}>
+      <Component>
+        {navData.map((curElem) => (
+          <Box key={crypto.randomUUID()}>
+            <img
+              style={{ width: 64, height: 64 }}
+              src={curElem.url}
+              alt="nav"
+            />
+            <Text>{curElem.text}</Text>
+          </Box>
+        ))}
+      </Component>
+    </Box>
   );
 };
 

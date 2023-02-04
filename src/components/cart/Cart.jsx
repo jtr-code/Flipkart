@@ -1,4 +1,4 @@
-import { Grid, styled, Typography } from "@mui/material";
+import { Button, Grid, styled, Typography, Box } from "@mui/material";
 import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
 import TotalBalance from "./TotalBalance";
@@ -7,8 +7,23 @@ import TotalBalance from "./TotalBalance";
 const Container = styled(Grid)`
   padding: 30px 135px;
 `;
+
 const Header = styled(Grid)`
   padding: 15px 24px;
+  background: #fff;
+`;
+
+const ButtonWrapper = styled(Button)`
+  padding: 16px 22px;
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 -2px 10px 0 rgb(0 0 0 /10%);
+  border-top: 1px solid #f0f0f0;
+`;
+
+const StyledButton = styled(Button)`
+  display: flex;
+  margin-left: auto;
 `;
 
 //      <--------------------------------------- styled section ends---------------------------------->
@@ -26,6 +41,9 @@ const Cart = () => {
             {cartItems.map((item) => (
               <CartItem item={item} />
             ))}
+            <ButtonWrapper>
+              <StyledButton>Place Order</StyledButton>
+            </ButtonWrapper>
           </Grid>
           <Grid item lg={3} md={3} sm={12} xs={12}>
             <TotalBalance />
