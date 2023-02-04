@@ -5,6 +5,7 @@ import DataProvider from "./context/DataProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DetailView from "./components/details/DetailView";
 import Cart from "./components/cart/Cart";
+import "./index.css";
 
 const App = () => {
   return (
