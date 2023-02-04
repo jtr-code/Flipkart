@@ -10,6 +10,8 @@ const Component = styled(Box)`
 `;
 const LeftComponent = styled(Box)`
   margin: 20px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const SmallText = styled(Typography)`
