@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addToCart } from "../../redux/actions/cartActions";
 
+
 //      <--------------------------------------- styled section starts-------------------------------->
 
 const LeftContainer = styled(Box)(({ theme }) => ({
@@ -43,7 +44,9 @@ const ActionDetails = ({ product }) => {
 
     navigate("/cart");
   };
+  const buyNow = async () => {
 
+  };
   return (
     <LeftContainer>
       <Image src={product.detailUrl} alt="singleproduct" />
@@ -56,7 +59,11 @@ const ActionDetails = ({ product }) => {
         <Cart />
         Add to Cart
       </StyledButton>
-      <StyledButton variant="contained" style={{ background: "#fb541b" }}>
+      <StyledButton
+        variant="contained"
+        style={{ background: "#fb541b" }}
+        onClick={() => buyNow()}
+      >
         <Flash />
         Buy Now
       </StyledButton>
