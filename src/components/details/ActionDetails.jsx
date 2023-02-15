@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addToCart } from "../../redux/actions/cartActions";
-
+import Stripe from "../payment/Stripe";
 
 //      <--------------------------------------- styled section starts-------------------------------->
 
@@ -38,15 +38,19 @@ const ActionDetails = ({ product }) => {
   const dispatch = useDispatch();
   const { id } = product;
   const [quantity, setQuantity] = useState(1);
+  const [showStripe, setShowStripe] = useState(false);
 
   const addItemToCart = () => {
     dispatch(addToCart(id, quantity));
 
     navigate("/cart");
+    
   };
-  const buyNow = async () => {
 
+  const handleStripeComponent = () => {
+    setShowStripe(true);
   };
+
   return (
     <LeftContainer>
       <Image src={product.detailUrl} alt="singleproduct" />
@@ -62,11 +66,12 @@ const ActionDetails = ({ product }) => {
       <StyledButton
         variant="contained"
         style={{ background: "#fb541b" }}
-        onClick={() => buyNow()}
+        onClick={handleStripeComponent}
       >
         <Flash />
         Buy Now
       </StyledButton>
+      {showStripe && <Stripe />}
     </LeftContainer>
   );
 };
