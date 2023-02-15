@@ -25,7 +25,7 @@ const Stripe = () => {
     console.log(response.status);
 
     if (response.status === 200) {
-      toast("Payment Succesfull ", { type: "success" });
+      toast("Payment Succesful ", { type: "success" });
       navigate("/");
     } else {
       toast("Payment Failed", { type: "error" });

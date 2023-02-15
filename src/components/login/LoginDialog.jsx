@@ -75,7 +75,7 @@ const Error = styled(Typography)`
   line-height: 0;
   margin-top: 10px;
   font-weight: 600;
-  margin-bottom:15px;
+  margin-bottom: 15px;
 `;
 
 //      <--------------------------------------- styled section ends-------------------------------->
@@ -205,6 +205,7 @@ const LoginDialog = ({ open, setOpen }) => {
             {error && <Error>Please enter valid username or password</Error>}
             <TextField
               label="Enter Password"
+              type="password"
               variant="standard"
               style={{ width: "100%" }}
               onChange={(event) => onValueChange(event)}
@@ -261,6 +262,7 @@ const LoginDialog = ({ open, setOpen }) => {
             />
             <TextField
               label="Enter Password"
+              type="password"
               variant="standard"
               style={{ width: "100%" }}
               name="password"
